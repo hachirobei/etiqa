@@ -1,0 +1,33 @@
+INSERT INTO products (book_title, book_price, book_quantity) VALUES
+('The Great Gatsby', 19.99, 3),
+('1984', 15.99, 5),
+('To Kill a Mockingbird', 18.50, 4),
+('The Catcher in the Rye', 20.00, 2),
+('Pride and Prejudice', 14.99, 6),
+('Animal Farm', 12.99, 10),
+('Moby Dick', 17.99, 1),
+('Jane Eyre', 21.99, 7),
+('Fahrenheit 451', 16.99, 3),
+('Wuthering Heights', 18.99, 5);
+
+INSERT INTO customers (first_name, last_name, email_office, email_personal, family_members) VALUES
+('John', 'Doe', 'johndoe@example.com', 'johndoe@gmail.com', 4),
+('Jane', 'Smith', 'janesmith@example.com', 'janesmith@gmail.com', 3),
+('Michael', 'Johnson', 'mjohnson@example.com', 'mjohnson@gmail.com', 5),
+('Emily', 'Williams', 'emilyw@example.com', 'emilyw@gmail.com', 2),
+('David', 'Brown', 'davidb@example.com', 'davidb@gmail.com', 6),
+('Jessica', 'Davis', 'jessicad@example.com', 'jessicad@gmail.com', 3),
+('Daniel', 'Miller', 'danielm@example.com', 'danielm@gmail.com', 2),
+('Sarah', 'Wilson', 'sarahw@example.com', 'sarahw@gmail.com', 5),
+('Charles', 'Moore', 'charlesm@example.com', 'charlesm@gmail.com', 4),
+('Laura', 'Taylor', 'laurat@example.com', 'laurat@gmail.com', 3),
+('Robert', 'Anderson', 'roberta@example.com', 'roberta@gmail.com', 4),
+('Linda', 'Thomas', 'lindat@example.com', 'lindat@gmail.com', 2),
+('Steven', 'Jackson', 'stevenj@example.com', 'stevenj@gmail.com', 3),
+('Patricia', 'White', 'patriciaw@example.com', 'patriciaw@gmail.com', 5),
+('Mark', 'Harris', 'markh@example.com', 'markh@gmail.com', 2),
+('Elizabeth', 'Martin', 'elizabethm@example.com', 'elizabethm@gmail.com', 6),
+('Thomas', 'Garcia', 'thomasg@example.com', 'thomasg@gmail.com', 4),
+('Jessica', 'Lee', 'jessical@example.com', 'jessical@gmail.com', 3),
+('David', 'Clark', 'davidc@example.com', 'davidc@gmail.com', 2),
+('Sophia', 'Lewis', 'sophial@example.com', 'sophial@gmail.com', 5);
