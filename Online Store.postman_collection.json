@@ -1,0 +1,1389 @@
+{
+	"info": {
+		"_postman_id": "23a8d864-cf81-4436-a557-c348b060889e",
+		"name": "Online Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22960917"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Create Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    var responseData = pm.response.json();",
+									"    pm.environment.set(\"customerId\", responseData.data.id);",
+									"    pm.environment.set(\"firstName\", responseData.data.firstName);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Jane 2\",\n  \"lastName\": \"Doe\",\n  \"emailOffice\": \"jane.doe@company.com\",\n  \"emailPersonal\": \"jane.doe@gmail.com\",\n  \"familyMembers\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customers"
+							]
+						},
+						"description": "### Create Customer\n\nThis API endpoint is used to create a new customer.\n\n#### Request Body\n\n- `firstName` (string, required): The first name of the customer.\n- `lastName` (string, required): The last name of the customer.\n- `emailOffice` (string, required): The office email of the customer.\n- `emailPersonal` (string, required): The personal email of the customer.\n- `familyMembers` (integer, required): The number of family members associated with the customer.\n    \n\n#### Response (JSON Schema)\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"succeeded\": {\n            \"type\": \"boolean\"\n        },\n        \"code\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                },\n                \"deleted\": {\n                    \"type\": \"boolean\"\n                },\n                \"id\": {\n                    \"type\": \"integer\"\n                },\n                \"firstName\": {\n                    \"type\": \"string\"\n                },\n                \"lastName\": {\n                    \"type\": \"string\"\n                },\n                \"emailOffice\": {\n                    \"type\": \"string\"\n                },\n                \"emailPersonal\": {\n                    \"type\": \"string\"\n                },\n                \"familyMembers\": {\n                    \"type\": \"integer\"\n                }\n            },\n            \"required\": [\"createdAt\", \"updatedAt\", \"deleted\", \"id\", \"firstName\", \"lastName\", \"emailOffice\", \"emailPersonal\", \"familyMembers\"]\n        }\n    },\n    \"required\": [\"succeeded\", \"data\"]\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Create Customer Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Jane 1\",\n  \"lastName\": \"Doe\",\n  \"emailOffice\": \"jane.doe@company.com\",\n  \"emailPersonal\": \"jane.doe@gmail.com\",\n  \"familyMembers\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/customers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 13:07:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"createdAt\": \"2024-04-26T13:07:47.798111538\",\n        \"updatedAt\": \"2024-04-26T13:07:47.798111538\",\n        \"deleted\": false,\n        \"id\": 3,\n        \"firstName\": \"Jane 1\",\n        \"lastName\": \"Doe\",\n        \"emailOffice\": \"jane.doe@company.com\",\n        \"emailPersonal\": \"jane.doe@gmail.com\",\n        \"familyMembers\": 4\n    }\n}"
+						},
+						{
+							"name": "Create Customer Fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Jane 1\",\n  \"emailOffice\": \"jane.doe@company.com\",\n  \"emailPersonal\": \"jane.doe@gmail.com\",\n  \"familyMembers\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/customers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 13:07:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": false,\n    \"code\": \"500\",\n    \"data\": \"Validation failed for classes [com.etiqa.onlinestore.entity.CustomerEntity] during persist time for groups [jakarta.validation.groups.Default, ]\\nList of constraint violations:[\\n\\tConstraintViolationImpl{interpolatedMessage='Last name is required', propertyPath=lastName, rootBeanClass=class com.etiqa.onlinestore.entity.CustomerEntity, messageTemplate='Last name is required'}\\n]\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 300ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(300);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Succeeded field exists and is a boolean\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.have.property(\"succeeded\");",
+									"  pm.expect(responseData.succeeded).to.be.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"data field exists and is an object\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.have.property('data');",
+									"    pm.expect(responseData.data).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Jane 1\",\n  \"lastName\": \"Doe\",\n  \"emailOffice\": \"jane.doe@company.com\",\n  \"emailPersonal\": \"jane.doe@gmail.com\",\n  \"familyMembers\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/api/customers/{{customerId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customers",
+								"{{customerId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Customer Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Jane 1\",\n  \"lastName\": \"Doe\",\n  \"emailOffice\": \"jane.doe@company.com\",\n  \"emailPersonal\": \"jane.doe@gmail.com\",\n  \"familyMembers\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 13:42:32 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"createdAt\": \"2024-04-26T13:41:55.183789\",\n        \"updatedAt\": \"2024-04-26T13:41:55.183789\",\n        \"deleted\": false,\n        \"id\": 15,\n        \"firstName\": \"Jane 1\",\n        \"lastName\": \"Doe\",\n        \"emailOffice\": \"jane.doe@company.com\",\n        \"emailPersonal\": \"jane.doe@gmail.com\",\n        \"familyMembers\": 4\n    }\n}"
+						},
+						{
+							"name": "Update Customer Fail",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Jane 1\",\n  \"lastName\": \"Doe\",\n  \"emailOffice\": \"jane.doe@company.com\",\n  \"emailPersonal\": \"jane.doe@gmail.com\",\n  \"familyMembers\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/customers/{{customerId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers",
+										"{{customerId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 13:50:20 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": false,\n    \"code\": \"404\",\n    \"data\": \"Customer not found with ID: 123123\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that 'succeeded' is a boolean\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.succeeded).to.be.a('boolean');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Code is a string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.code).to.be.a('string');",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/api/customers/{{customerId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customers",
+								"{{customerId}}"
+							]
+						},
+						"description": "\nThis endpoint sends an HTTP DELETE request to delete a specific customer identified by the customerId parameter in the URL.\n\n### Response\nThe response is in JSON format with a status code of 200. The schema for the response is as follows:\n\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"succeeded\": {\n            \"type\": \"boolean\"\n        },\n        \"code\": {\n            \"type\": \"string\"\n        },\n        \"object\": {\n            \"type\": \"null\"\n        }\n    }\n}\n```\n"
+					},
+					"response": [
+						{
+							"name": "Delete Customer Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8050/api/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 13:52:11 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "Delete Customer Fail",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8050/api/customers/{{customerId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers",
+										"{{customerId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 13:51:40 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": false,\n    \"code\": \"404\",\n    \"data\": \"Customer not found with ID: 15\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch Customer",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Jane 1\",\n  \"lastName\": \"Doe\",\n  \"emailOffice\": \"jane.doe@company.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/api/customers/{{customerId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customers",
+								"{{customerId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Patch Customer Success",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Jane 1\",\n  \"lastName\": \"Doe\",\n  \"emailOffice\": \"jane.doe@company.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 13:54:07 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"createdAt\": \"2024-04-26T13:53:55.221113\",\n        \"updatedAt\": \"2024-04-26T13:53:55.221113\",\n        \"deleted\": false,\n        \"id\": 17,\n        \"firstName\": \"Jane 1\",\n        \"lastName\": \"Doe\",\n        \"emailOffice\": \"jane.doe@company.com\",\n        \"emailPersonal\": \"jane.doe@gmail.com\",\n        \"familyMembers\": 4\n    }\n}"
+						},
+						{
+							"name": "Patch Customer Fail",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Jane 1\",\n  \"lastName\": \"Doe\",\n  \"emailOffice\": \"jane.doe@company.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/customers/{{customerId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers",
+										"{{customerId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 13:55:18 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": false,\n    \"code\": \"404\",\n    \"data\": \"Customer not found with ID: 17\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "{{firstName}}",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Customer Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8050/api/customers?search=&page=1&size=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:01:35 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"content\": [\n            {\n                \"createdAt\": \"2024-04-26T14:01:29.446436\",\n                \"updatedAt\": \"2024-04-26T14:01:29.446436\",\n                \"deleted\": false,\n                \"id\": 18,\n                \"firstName\": \"Jane 2\",\n                \"lastName\": \"Doe\",\n                \"emailOffice\": \"jane.doe@company.com\",\n                \"emailPersonal\": \"jane.doe@gmail.com\",\n                \"familyMembers\": 4\n            }\n        ],\n        \"pageable\": {\n            \"pageNumber\": 0,\n            \"pageSize\": 10,\n            \"sort\": {\n                \"empty\": true,\n                \"sorted\": false,\n                \"unsorted\": true\n            },\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"last\": true,\n        \"totalElements\": 1,\n        \"totalPages\": 1,\n        \"size\": 10,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": true,\n            \"sorted\": false,\n            \"unsorted\": true\n        },\n        \"first\": true,\n        \"numberOfElements\": 1,\n        \"empty\": false\n    }\n}"
+						},
+						{
+							"name": "List Customer Fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8050/api/customers?search=qweqwe&page=1&size=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"customers"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "qweqwe"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:03:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"content\": [],\n        \"pageable\": {\n            \"pageNumber\": 0,\n            \"pageSize\": 10,\n            \"sort\": {\n                \"empty\": true,\n                \"sorted\": false,\n                \"unsorted\": true\n            },\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"last\": true,\n        \"totalElements\": 0,\n        \"totalPages\": 0,\n        \"size\": 10,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": true,\n            \"sorted\": false,\n            \"unsorted\": true\n        },\n        \"first\": true,\n        \"numberOfElements\": 0,\n        \"empty\": true\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    var responseData = pm.response.json();",
+									"    pm.environment.set(\"productId\", responseData.data.id);",
+									"    pm.environment.set(\"bookTitle\", responseData.data.bookTitle);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookTitle\": \"Harry Potter\",\n    \"bookPrice\": \"100.00\",\n    \"bookQuantity\": \"200\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "The API endpoint allows the creation of a new product using an HTTP POST request to [http://localhost:8050/api/products](http://localhost:8050/api/products). The request should include a payload in raw JSON format with the keys \"bookTitle\", \"bookPrice\", and \"bookQuantity\".\n\n### Request Body\n\n- `bookTitle` (string): The title of the book.\n- `bookPrice` (string): The price of the book.\n- `bookQuantity` (string): The quantity of the book.\n    \n\nThe response to this request has a status code of 201 and a content type of application/json. The response body is a JSON object with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"succeeded\": {\n      \"type\": \"boolean\"\n    },\n    \"code\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"createdAt\": {\n          \"type\": \"string\"\n        },\n        \"updatedAt\": {\n          \"type\": \"string\"\n        },\n        \"deleted\": {\n          \"type\": \"boolean\"\n        },\n        \"id\": {\n          \"type\": \"integer\"\n        },\n        \"bookTitle\": {\n          \"type\": \"string\"\n        },\n        \"bookPrice\": {\n          \"type\": \"number\"\n        },\n        \"bookQuantity\": {\n          \"type\": \"integer\"\n        }\n      }\n    }\n  }\n}\n\n ```\n\n### Response Body\n\n- `succeeded` (boolean): Indicates whether the request succeeded.\n- `code` (string): A code related to the request.\n- `data` (object): An object containing information about the created product.\n    - `createdAt` (string): The timestamp when the product was created.\n    - `updatedAt` (string): The timestamp when the product was last updated.\n    - `deleted` (boolean): Indicates whether the product is deleted.\n    - `id` (integer): The unique identifier of the product.\n    - `bookTitle` (string): The title of the book.\n    - `bookPrice` (number): The price of the book.\n    - `bookQuantity` (integer): The quantity of the book."
+					},
+					"response": [
+						{
+							"name": "Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookTitle\": \"Harry Potter\",\n    \"bookPrice\": \"100.00\",\n    \"bookQuantity\": \"200\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:10:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"createdAt\": \"2024-04-26T14:10:08.842075715\",\n        \"updatedAt\": \"2024-04-26T14:10:08.842075715\",\n        \"deleted\": false,\n        \"id\": 1,\n        \"bookTitle\": \"Harry Potter\",\n        \"bookPrice\": 100,\n        \"bookQuantity\": 200\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookTitle\": \"Harry Potter 2\",\n    \"bookPrice\": \"100.00\",\n    \"bookQuantity\": \"200\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/api/products/{{productId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products",
+								"{{productId}}"
+							]
+						},
+						"description": "### Update Product Details\n\nThis endpoint allows the client to update the details of a specific product by sending an HTTP PUT request to the specified URL.\n\n#### Request Body\n\n- `bookTitle` (string): The title of the book to be updated.\n- `bookPrice` (string): The updated price of the book.\n- `bookQuantity` (string): The updated quantity of the book.\n    \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"succeeded\": {\n      \"type\": \"boolean\"\n    },\n    \"code\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"createdAt\": {\n          \"type\": \"string\"\n        },\n        \"updatedAt\": {\n          \"type\": \"string\"\n        },\n        \"deleted\": {\n          \"type\": \"boolean\"\n        },\n        \"id\": {\n          \"type\": \"integer\"\n        },\n        \"bookTitle\": {\n          \"type\": \"string\"\n        },\n        \"bookPrice\": {\n          \"type\": \"number\"\n        },\n        \"bookQuantity\": {\n          \"type\": \"integer\"\n        }\n      }\n    }\n  }\n}\n\n ```\n\n#### Example Response\n\n``` json\n{\n  \"succeeded\": true,\n  \"code\": \"\",\n  \"data\": {\n    \"createdAt\": \"\",\n    \"updatedAt\": \"\",\n    \"deleted\": true,\n    \"id\": 0,\n    \"bookTitle\": \"\",\n    \"bookPrice\": 0,\n    \"bookQuantity\": 0\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Update Product Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookTitle\": \"Harry Potter 2\",\n    \"bookPrice\": \"100.00\",\n    \"bookQuantity\": \"200\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/products/{{productId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"products",
+										"{{productId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:11:15 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"createdAt\": \"2024-04-26T14:10:50.327149\",\n        \"updatedAt\": \"2024-04-26T14:11:15.208755071\",\n        \"deleted\": false,\n        \"id\": 2,\n        \"bookTitle\": \"Harry Potter 2\",\n        \"bookPrice\": 100,\n        \"bookQuantity\": 200\n    }\n}"
+						},
+						{
+							"name": "Update Product Fail",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookTitle\": \"Harry Potter 2\",\n    \"bookPrice\": \"100.00\",\n    \"bookQuantity\": \"200\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/products/{{productId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"products",
+										"{{productId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:20:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": false,\n    \"code\": \"404\",\n    \"data\": \"Product not found with ID: 9878978\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/api/products/{{productId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products",
+								"{{productId}}"
+							]
+						},
+						"description": "This endpoint makes an HTTP DELETE request to delete a specific product identified by the productId parameter in the URL.\n\n### Request Body\n\nThis request does not contain a request body.\n\n### Response\n\n- Status: 200\n- Content-Type: application/json\n    \n\nExample Response:\n\n``` json\n{\n    \"succeeded\": true,\n    \"code\": \"\",\n    \"data\": null\n}\n\n ```\n\nThe response indicates the success of the deletion operation with the \"succeeded\" field. The \"data\" field is null as no specific data is returned after the deletion."
+					},
+					"response": [
+						{
+							"name": "Delete Product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8050/api/products/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"products",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:11:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Patch Product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookTitle\": \"Harry Potter\",\n    \"bookQuantity\": \"200\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:{{port}}/api/products/{{productId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products",
+								"{{productId}}"
+							]
+						},
+						"description": "### Update Product Details\n\nThis endpoint is used to update the details of a specific product.\n\n#### Request Body\n\n- `bookTitle` (string, optional): The updated title of the book.\n- `bookQuantity` (string, optional): The updated quantity of the book.\n    \n\n#### Response\n\nThe response will be a JSON object with the following properties:\n\n- `succeeded` (boolean): Indicates if the update operation was successful.\n- `code` (string): A code associated with the response.\n- `data` (object): An object containing the updated product details.\n    - `createdAt` (string): The timestamp of the product's creation.\n    - `updatedAt` (string): The timestamp of the product's last update.\n    - `deleted` (boolean): Indicates if the product is marked as deleted.\n    - `id` (integer): The unique identifier of the product.\n    - `bookTitle` (string): The updated title of the book.\n    - `bookPrice` (integer): The price of the book.\n    - `bookQuantity` (integer): The updated quantity of the book.\n\n#### Example Response\n\n``` json\n{\n    \"succeeded\": true,\n    \"code\": \"\",\n    \"data\": {\n        \"createdAt\": \"\",\n        \"updatedAt\": \"\",\n        \"deleted\": true,\n        \"id\": 0,\n        \"bookTitle\": \"\",\n        \"bookPrice\": 0,\n        \"bookQuantity\": 0\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "Patch Product Success",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookTitle\": \"Harry Potter\",\n    \"bookQuantity\": \"200\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/products/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"products",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:17:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"createdAt\": \"2024-04-26T14:16:45.668298\",\n        \"updatedAt\": \"2024-04-26T14:16:45.668298\",\n        \"deleted\": false,\n        \"id\": 1,\n        \"bookTitle\": \"Harry Potter\",\n        \"bookPrice\": 100,\n        \"bookQuantity\": 200\n    }\n}"
+						},
+						{
+							"name": "Patch Product Fail",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookTitle\": \"Harry Potter\",\n    \"bookQuantity\": \"200\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8050/api/products/{{productId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"products",
+										"{{productId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:17:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": false,\n    \"code\": \"404\",\n    \"data\": \"Product not found with ID: 12312332\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:{{port}}/api/products?search={{bookTitle}}&page=1&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "{{bookTitle}}"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "The API endpoint makes an HTTP GET request to retrieve a list of products based on the provided search criteria. The request includes a query parameter for search, page number, and page size.\n\n### Response\n\nThe response is in JSON format with a 200 status code and \"application/json\" content type. Below is the JSON schema for the response:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"succeeded\": {\n      \"type\": \"boolean\"\n    },\n    \"code\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"content\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"createdAt\": {\n                \"type\": \"string\"\n              },\n              \"updatedAt\": {\n                \"type\": \"string\"\n              },\n              \"deleted\": {\n                \"type\": \"boolean\"\n              },\n              \"id\": {\n                \"type\": \"integer\"\n              },\n              \"bookTitle\": {\n                \"type\": \"string\"\n              },\n              \"bookPrice\": {\n                \"type\": \"number\"\n              },\n              \"bookQuantity\": {\n                \"type\": \"integer\"\n              }\n            }\n          }\n        },\n        \"pageable\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"pageNumber\": {\n              \"type\": \"integer\"\n            },\n            \"pageSize\": {\n              \"type\": \"integer\"\n            },\n            \"sort\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"empty\": {\n                  \"type\": \"boolean\"\n                },\n                \"sorted\": {\n                  \"type\": \"boolean\"\n                },\n                \"unsorted\": {\n                  \"type\": \"boolean\"\n                }\n              }\n            },\n            \"offset\": {\n              \"type\": \"integer\"\n            },\n            \"paged\": {\n              \"type\": \"boolean\"\n            },\n            \"unpaged\": {\n              \"type\": \"boolean\"\n            }\n          }\n        },\n        \"totalElements\": {\n          \"type\": \"integer\"\n        },\n        \"totalPages\": {\n          \"type\": \"integer\"\n        },\n        \"last\": {\n          \"type\": \"boolean\"\n        },\n        \"size\": {\n          \"type\": \"integer\"\n        },\n        \"number\": {\n          \"type\": \"integer\"\n        },\n        \"sort\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"empty\": {\n              \"type\": \"boolean\"\n            },\n            \"sorted\": {\n              \"type\": \"boolean\"\n            },\n            \"unsorted\": {\n              \"type\": \"boolean\"\n            }\n          }\n        },\n        \"numberOfElements\": {\n          \"type\": \"integer\"\n        },\n        \"first\": {\n          \"type\": \"boolean\"\n        },\n        \"empty\": {\n          \"type\": \"boolean\"\n        }\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "List Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8050/api/products?search=&page=1&size=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8050",
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": ""
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 14:16:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"content\": [\n            {\n                \"createdAt\": \"2024-04-26T14:16:45.668298\",\n                \"updatedAt\": \"2024-04-26T14:16:45.668298\",\n                \"deleted\": false,\n                \"id\": 1,\n                \"bookTitle\": \"Harry Potter\",\n                \"bookPrice\": 100,\n                \"bookQuantity\": 200\n            }\n        ],\n        \"pageable\": {\n            \"pageNumber\": 0,\n            \"pageSize\": 10,\n            \"sort\": {\n                \"empty\": true,\n                \"sorted\": false,\n                \"unsorted\": true\n            },\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalElements\": 1,\n        \"totalPages\": 1,\n        \"last\": true,\n        \"size\": 10,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": true,\n            \"sorted\": false,\n            \"unsorted\": true\n        },\n        \"numberOfElements\": 1,\n        \"first\": true,\n        \"empty\": false\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "customerId",
+			"value": "1"
+		},
+		{
+			"key": "firstName",
+			"value": "Jane 1"
+		},
+		{
+			"key": "productId",
+			"value": "1"
+		},
+		{
+			"key": "bookTitle",
+			"value": "Saya"
+		},
+		{
+			"key": "port",
+			"value": "8050"
+		}
+	]
+}
