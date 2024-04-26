@@ -5,9 +5,13 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Data
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -30,6 +34,7 @@ public class ProductEntity extends BaseEntity {
     @NotNull(message = "Book quantity must be provided")
     @Min(value = 0, message = "Book quantity must be zero or positive")
     @Column(name = "book_quantity")
+    
     private Integer bookQuantity;
 
 	public Long getId() {
@@ -63,6 +68,11 @@ public class ProductEntity extends BaseEntity {
 	public void setBookQuantity(Integer bookQuantity) {
 		this.bookQuantity = bookQuantity;
 	}
+
     
-    
+	public ProductEntity(String bookTitle, double bookPrice, int bookQuantity) {
+	    this.bookTitle = bookTitle;
+	    this.bookPrice = bookPrice;
+	    this.bookQuantity = bookQuantity;
+	}
 }

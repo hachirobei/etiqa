@@ -87,4 +87,14 @@ public class CustomerEntity extends BaseEntity {
 
     @Column(name = "family_members")
     private Integer familyMembers;
+
+    
+	public CustomerEntity(String firstName, String lastName, String email, String secondaryEmail, int familyMembers) {
+	    this.firstName = firstName;
+	    this.lastName = lastName;
+	    this.emailOffice = email;
+	    this.emailPersonal = secondaryEmail;
+	    this.familyMembers = familyMembers;
+	}
+    
 }
