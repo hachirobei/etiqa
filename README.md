@@ -71,19 +71,19 @@ This project follows a modular and clean architecture, organized into various pa
 
 ### Packages
 
-- `config`: Includes configuration classes for the entire application. It typically contains security configuration, bean configurations, error handling, and Swagger API documentation setup.
+- `config`: Configuration classes for the application including security and API documentation setups.
 
-- `controller`: Contains controller classes responsible for handling incoming HTTP requests, mapping those requests to appropriate service methods, and returning responses.
+- `controller`: Controllers handle incoming HTTP requests and delegate to services.
 
-- `dto` (Data Transfer Objects): Holds classes used for encapsulating data and transferring it between the controller layer and the service layer.
+- `dto` (Data Transfer Objects): Data Transfer Objects to encapsulate data exchange between layers.
 
-- `entity`: Contains the domain model classes which represent the application's persistent data structure, typically mirroring the database tables.
+- `entity`: Domain model classes representing persistent data.
 
-- `exception`: Houses custom exceptions for the application, providing a cleaner way to handle errors and specific conditions that occur during the execution of the application.
+- `exception`: Custom exceptions for handling specific error conditions.
 
-- `repository`: Consists of interfaces that extend Spring Data JPA repositories, allowing for abstracted CRUD operations and database interactions.
+- `repository`: Interfaces for database interactions extending Spring Data JPA.
 
-- `service`: Contains the service classes where the business logic of the application resides, orchestrating data between the controllers and repositories.
+- `service`: Business logic with separate implementations for modularity.
 
 
 ## Development
@@ -115,9 +115,7 @@ Explore and interact with the APIs using Swagger UI. Access the API documentatio
 
 ## Testing
 
-To test the functionality of the Online Store Management System's APIs, you can use the provided Postman collection file named "Online Store.postman_collection". This collection contains pre-defined requests that you can import into your Postman application for testing purposes.
-
-**Instructions:**
+### Manual Testing with Postman
 
 1. **Download the Postman Collection:**
    - Download the "Online Store.postman_collection" file from the project repository.
@@ -128,9 +126,26 @@ To test the functionality of the Online Store Management System's APIs, you can 
    - Select the downloaded "Online Store.postman_collection" file.
    - The collection will be imported into your Postman workspace.
 
-3. **Test APIs:**
+3. **Test the APIs:**
    - Explore the imported collection to view available requests.
    - Execute requests to interact with the Online Store Management System's APIs.
    - Verify responses to ensure the APIs function as expected.
 
-Using the Postman collection simplifies the testing process and allows you to validate the functionality and performance of the Online Store Management System's APIs before deployment.
+### Automated Testing
+
+1. **Ensure the Main Application is Running:**
+   - Before running tests, make sure the application containers are up:
+     ```bash
+     docker-compose up -d
+     ```
+
+2. **Execute JUnit Tests in a Separate Container:**
+   - Run the JUnit tests in an isolated Docker container to avoid affecting the main application:
+     ```bash
+     docker-compose run --rm test_service
+     ```
+   - This command triggers the test service defined in your `docker-compose.yml`, which is configured to run the JUnit tests in standalone mode.
+
+### Continuous Integration
+
+- **Integrate these tests into your CI/CD pipeline** to ensure consistent testing with each build. This practice helps maintain high standards of quality and reliability for application.
