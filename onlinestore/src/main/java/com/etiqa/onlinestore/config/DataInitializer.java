@@ -2,12 +2,10 @@ package com.etiqa.onlinestore.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.etiqa.onlinestore.entity.ProductEntity;
 import com.etiqa.onlinestore.entity.CustomerEntity;
-import com.etiqa.onlinestore.service.CustomerService;
 import com.etiqa.onlinestore.service.ProductService;
-
+import com.etiqa.onlinestore.service.CustomerService;
 import jakarta.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
