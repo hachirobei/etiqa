@@ -71,12 +71,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/customers",
+									"raw": "http://localhost:8051/api/customers",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"customers"
@@ -126,12 +126,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/customers",
+									"raw": "http://localhost:{{port}}/api/customers",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "{{port}}",
 									"path": [
 										"api",
 										"customers"
@@ -225,7 +225,8 @@
 								"customers",
 								"{{customerId}}"
 							]
-						}
+						},
+						"description": "\n### Update Customer Details\n\nThis endpoint allows the client to update the details of a specific customer.\n\n#### Request\n\n- Method: PUT\n- URL: `http://localhost:{{port}}/api/customers/{{customerId}}`\n\n##### Request Body\n- Type: Raw\n- Payload:\n  ```json\n  {\n    \"firstName\":\"\",\n    \"lastName\":\"\",\n    \"emailOffice\":\"\",\n    \"emailPersonal\":\"\",\n    \"familyMembers\":0\n  }\n  ```\n\n#### Response\n\nThe response for this request can be represented as a JSON schema:\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"succeeded\": {\n      \"type\": \"boolean\"\n    },\n    \"code\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"createdAt\": {\n          \"type\": \"string\"\n        },\n        \"updatedAt\": {\n          \"type\": \"string\"\n        },\n        \"deleted\": {\n          \"type\": \"boolean\"\n        },\n        \"id\": {\n          \"type\": \"integer\"\n        },\n        \"firstName\": {\n          \"type\": \"string\"\n        },\n        \"lastName\": {\n          \"type\": \"string\"\n        },\n        \"emailOffice\": {\n          \"type\": \"string\"\n        },\n        \"emailPersonal\": {\n          \"type\": \"string\"\n        },\n        \"familyMembers\": {\n          \"type\": \"integer\"\n        }\n      }\n    }\n  }\n}\n```\n"
 					},
 					"response": [
 						{
@@ -243,12 +244,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/customers/1",
+									"raw": "http://localhost:8051/api/customers/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"customers",
@@ -299,12 +300,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/customers/{{customerId}}",
+									"raw": "http://localhost:{{port}}/api/customers/{{customerId}}",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "{{port}}",
 									"path": [
 										"api",
 										"customers",
@@ -407,12 +408,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8050/api/customers/1",
+									"raw": "http://localhost:8051/api/customers/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"customers",
@@ -454,12 +455,12 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8050/api/customers/{{customerId}}",
+									"raw": "http://localhost:{{port}}/api/customers/{{customerId}}",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "{{port}}",
 									"path": [
 										"api",
 										"customers",
@@ -523,7 +524,8 @@
 								"customers",
 								"{{customerId}}"
 							]
-						}
+						},
+						"description": "### PATCH /api/customers/{{customerId}}\n\nThis endpoint is used to update customer information.\n\n#### Request Body\n\n- `firstName` (string, optional): The first name of the customer.\n- `lastName` (string, optional): The last name of the customer.\n- `emailOffice` (string, optional): The office email of the customer.\n    \n\n#### Response\n\nThe response is in the form of a JSON schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"succeeded\": {\n            \"type\": \"boolean\"\n        },\n        \"code\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                },\n                \"deleted\": {\n                    \"type\": \"boolean\"\n                },\n                \"id\": {\n                    \"type\": \"number\"\n                },\n                \"firstName\": {\n                    \"type\": \"string\"\n                },\n                \"lastName\": {\n                    \"type\": \"string\"\n                },\n                \"emailOffice\": {\n                    \"type\": \"string\"\n                },\n                \"emailPersonal\": {\n                    \"type\": \"string\"\n                },\n                \"familyMembers\": {\n                    \"type\": \"number\"\n                }\n            }\n        }\n    }\n}\n\n ```"
 					},
 					"response": [
 						{
@@ -541,12 +543,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/customers/1",
+									"raw": "http://localhost:8051/api/customers/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"customers",
@@ -597,12 +599,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/customers/{{customerId}}",
+									"raw": "http://localhost:{{port}}/api/customers/{{customerId}}",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "{{port}}",
 									"path": [
 										"api",
 										"customers",
@@ -673,7 +675,8 @@
 									"disabled": true
 								}
 							]
-						}
+						},
+						"description": "### GET /api/customers\n\nThis endpoint retrieves a list of customers.\n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"succeeded\": {\n      \"type\": \"boolean\"\n    },\n    \"code\": {\n      \"type\": \"string\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"content\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"createdAt\": {\n                \"type\": \"string\"\n              },\n              \"updatedAt\": {\n                \"type\": \"string\"\n              },\n              \"deleted\": {\n                \"type\": \"boolean\"\n              },\n              \"id\": {\n                \"type\": \"integer\"\n              },\n              \"firstName\": {\n                \"type\": \"string\"\n              },\n              \"lastName\": {\n                \"type\": \"string\"\n              },\n              \"emailOffice\": {\n                \"type\": \"string\"\n              },\n              \"emailPersonal\": {\n                \"type\": \"string\"\n              },\n              \"familyMembers\": {\n                \"type\": \"integer\"\n              }\n            }\n          }\n        },\n        \"pageable\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"pageNumber\": {\n              \"type\": \"integer\"\n            },\n            \"pageSize\": {\n              \"type\": \"integer\"\n            },\n            \"sort\": {\n              \"type\": \"object\",\n              \"properties\": {\n                \"empty\": {\n                  \"type\": \"boolean\"\n                },\n                \"sorted\": {\n                  \"type\": \"boolean\"\n                },\n                \"unsorted\": {\n                  \"type\": \"boolean\"\n                }\n              }\n            },\n            \"offset\": {\n              \"type\": \"integer\"\n            },\n            \"paged\": {\n              \"type\": \"boolean\"\n            },\n            \"unpaged\": {\n              \"type\": \"boolean\"\n            }\n          }\n        },\n        \"totalElements\": {\n          \"type\": \"integer\"\n        },\n        \"totalPages\": {\n          \"type\": \"integer\"\n        },\n        \"last\": {\n          \"type\": \"boolean\"\n        },\n        \"size\": {\n          \"type\": \"integer\"\n        },\n        \"number\": {\n          \"type\": \"integer\"\n        },\n        \"sort\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"empty\": {\n              \"type\": \"boolean\"\n            },\n            \"sorted\": {\n              \"type\": \"boolean\"\n            },\n            \"unsorted\": {\n              \"type\": \"boolean\"\n            }\n          }\n        },\n        \"numberOfElements\": {\n          \"type\": \"integer\"\n        },\n        \"first\": {\n          \"type\": \"boolean\"\n        },\n        \"empty\": {\n          \"type\": \"boolean\"\n        }\n      }\n    }\n  }\n}\n\n ```"
 					},
 					"response": [
 						{
@@ -682,12 +685,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8050/api/customers?search=&page=1&size=10",
+									"raw": "http://localhost:8051/api/customers?search=&page=1&size=10",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"customers"
@@ -742,12 +745,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8050/api/customers?search=qweqwe&page=1&size=10",
+									"raw": "http://localhost:{{port}}/api/customers?search=qweqwe&page=1&size=10",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "{{port}}",
 									"path": [
 										"api",
 										"customers"
@@ -851,7 +854,7 @@
 					},
 					"response": [
 						{
-							"name": "Create Product",
+							"name": "Create Product Success",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -865,12 +868,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/products",
+									"raw": "http://localhost:8051/api/products",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"products"
@@ -904,6 +907,57 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"createdAt\": \"2024-04-26T14:10:08.842075715\",\n        \"updatedAt\": \"2024-04-26T14:10:08.842075715\",\n        \"deleted\": false,\n        \"id\": 1,\n        \"bookTitle\": \"Harry Potter\",\n        \"bookPrice\": 100,\n        \"bookQuantity\": 200\n    }\n}"
+						},
+						{
+							"name": "Create Product Fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bookPrice\": \"100.00\",\n    \"bookQuantity\": \"200\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:{{port}}/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 27 Apr 2024 05:32:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": false,\n    \"code\": \"500\",\n    \"data\": \"Validation failed for classes [com.etiqa.onlinestore.entity.ProductEntity] during persist time for groups [jakarta.validation.groups.Default, ]\\nList of constraint violations:[\\n\\tConstraintViolationImpl{interpolatedMessage='Book title is required', propertyPath=bookTitle, rootBeanClass=class com.etiqa.onlinestore.entity.ProductEntity, messageTemplate='Book title is required'}\\n]\"\n}"
 						}
 					]
 				},
@@ -952,16 +1006,16 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/products/{{productId}}",
+									"raw": "http://localhost:8051/api/products/",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"products",
-										"{{productId}}"
+										""
 									]
 								}
 							},
@@ -1008,12 +1062,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/products/{{productId}}",
+									"raw": "http://localhost:{{port}}/api/products/{{productId}}",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "{{port}}",
 									"path": [
 										"api",
 										"products",
@@ -1073,17 +1127,17 @@
 					},
 					"response": [
 						{
-							"name": "Delete Product",
+							"name": "Delete Product Success",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8050/api/products/",
+									"raw": "http://localhost:8051/api/products/",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"products",
@@ -1118,6 +1172,53 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": null\n}"
+						},
+						{
+							"name": "Delete Product Fail",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:{{port}}/api/products/{{productId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"products",
+										"{{productId}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 27 Apr 2024 05:24:43 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": false,\n    \"code\": \"404\",\n    \"data\": \"Product not found with ID: 12\"\n}"
 						}
 					]
 				},
@@ -1166,12 +1267,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/products/",
+									"raw": "http://localhost:8051/api/products/",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "8051",
 									"path": [
 										"api",
 										"products",
@@ -1222,12 +1323,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8050/api/products/{{productId}}",
+									"raw": "http://localhost:{{port}}/api/products/{{productId}}",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "{{port}}",
 									"path": [
 										"api",
 										"products",
@@ -1271,7 +1372,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:{{port}}/api/products?search={{bookTitle}}&page=1&size=10",
+							"raw": "http://localhost:{{port}}/api/products?size=10&search={{bookTitle}}&page=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1283,16 +1384,16 @@
 							],
 							"query": [
 								{
+									"key": "size",
+									"value": "10"
+								},
+								{
 									"key": "search",
 									"value": "{{bookTitle}}"
 								},
 								{
 									"key": "page",
 									"value": "1"
-								},
-								{
-									"key": "size",
-									"value": "10"
 								}
 							]
 						},
@@ -1300,17 +1401,17 @@
 					},
 					"response": [
 						{
-							"name": "List Product",
+							"name": "List Product Success",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8050/api/products?search=&page=1&size=10",
+									"raw": "http://localhost:{{port}}/api/products?search={{bookTitle}}&page=1&size=10",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8050",
+									"port": "{{port}}",
 									"path": [
 										"api",
 										"products"
@@ -1318,7 +1419,7 @@
 									"query": [
 										{
 											"key": "search",
-											"value": ""
+											"value": "{{bookTitle}}"
 										},
 										{
 											"key": "page",
@@ -1358,6 +1459,66 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"content\": [\n            {\n                \"createdAt\": \"2024-04-26T14:16:45.668298\",\n                \"updatedAt\": \"2024-04-26T14:16:45.668298\",\n                \"deleted\": false,\n                \"id\": 1,\n                \"bookTitle\": \"Harry Potter\",\n                \"bookPrice\": 100,\n                \"bookQuantity\": 200\n            }\n        ],\n        \"pageable\": {\n            \"pageNumber\": 0,\n            \"pageSize\": 10,\n            \"sort\": {\n                \"empty\": true,\n                \"sorted\": false,\n                \"unsorted\": true\n            },\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalElements\": 1,\n        \"totalPages\": 1,\n        \"last\": true,\n        \"size\": 10,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": true,\n            \"sorted\": false,\n            \"unsorted\": true\n        },\n        \"numberOfElements\": 1,\n        \"first\": true,\n        \"empty\": false\n    }\n}"
+						},
+						{
+							"name": "List Product Fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:{{port}}/api/products?size=10&search={{bookTitle}}&page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "{{port}}",
+									"path": [
+										"api",
+										"products"
+									],
+									"query": [
+										{
+											"key": "size",
+											"value": "10"
+										},
+										{
+											"key": "search",
+											"value": "{{bookTitle}}"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 27 Apr 2024 05:26:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"succeeded\": true,\n    \"code\": \"200\",\n    \"data\": {\n        \"content\": [],\n        \"pageable\": {\n            \"pageNumber\": 0,\n            \"pageSize\": 10,\n            \"sort\": {\n                \"empty\": true,\n                \"sorted\": false,\n                \"unsorted\": true\n            },\n            \"offset\": 0,\n            \"paged\": true,\n            \"unpaged\": false\n        },\n        \"totalElements\": 0,\n        \"totalPages\": 0,\n        \"last\": true,\n        \"size\": 10,\n        \"number\": 0,\n        \"sort\": {\n            \"empty\": true,\n            \"sorted\": false,\n            \"unsorted\": true\n        },\n        \"numberOfElements\": 0,\n        \"first\": true,\n        \"empty\": true\n    }\n}"
 						}
 					]
 				}
