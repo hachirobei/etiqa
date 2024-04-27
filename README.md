@@ -14,6 +14,7 @@ OnlineStore API is a robust Spring Boot application designed to simplify the man
 ## Table of Contents
 - [Features](#features)
 - [Prerequisites](#prerequisites)
+- [Why Docker?](#why-docker)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
 - [Development](#development)
@@ -36,6 +37,12 @@ Before you begin, ensure you have the following installed on your local machine:
 Additionally, for running the project using Docker, make sure you have:
 - **Docker:** Install Docker to containerize and deploy the application.
 - **Docker Compose:** Install Docker Compose to manage multi-container Docker applications.
+
+## Why Docker?
+
+Utilizing Docker within the OnlineStore API project enhances consistency, simplifies configuration, and ensures that the application environment is replicable and isolated. This approach minimizes compatibility issues across different environments and facilitates easier scaling and security management. Docker's lightweight nature also ensures efficient use of system resources.
+
+Docker's integration into CI/CD pipelines promotes robust testing and deployment practices, ensuring that each build is automatically tested and deployed, maintaining high standards of quality and reliability.
 
 ## Getting Started
 
