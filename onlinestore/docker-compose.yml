@@ -20,23 +20,32 @@ services:
       retries: 5
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      
+
   api_service:
     container_name: onlinestore-etiqa
     build: .
     restart: always
     ports:
-      - ${APP_PORT_MAP}:8080
+      - "${APP_PORT_MAP}:8080"
     networks:
       - local_network
     environment:
-      - spring.datasource.url=jdbc:mysql://mysqldb-etiqa:3306/${MYSQL_DATABASE}?allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb-etiqa:3306/${MYSQL_DATABASE}?allowPublicKeyRetrieval=true&useSSL=false
     depends_on:
       - mysqldb
     volumes:
       - .m2:/root/.m2
-      
 
+  test_service:
+    build:
+      context: .
+      target: test
+    container_name: test_api_service
+    depends_on:
+      - api_service
+    networks:
+      - local_network
+    command: mvn test
 
 networks:
   local_network:

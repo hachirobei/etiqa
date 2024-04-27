@@ -23,8 +23,15 @@ COPY pom.xml /home/app
 # Build the application, skipping tests
 RUN mvn -f /home/app/pom.xml clean package -DskipTests
 
+# Test stage
+FROM build AS test
+WORKDIR /home/app
+# Use the compiled and packaged resources from the build stage
+# Run Maven test on the current project
+CMD ["mvn", "test"]
+
 # Package stage
-FROM openjdk:17
+FROM openjdk:17 AS package
 
 # Define the port the application exposes
 EXPOSE 8080
@@ -33,7 +40,6 @@ EXPOSE 8080
 WORKDIR /usr/local/lib
 
 # Copy the built jar file from the build stage
-# The wildcard * will match the artifact built by Maven which includes the version
 COPY --from=build /home/app/target/*.jar app.jar
 
 # Set the container entrypoint
